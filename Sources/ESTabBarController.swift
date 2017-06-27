@@ -128,6 +128,12 @@ open class ESTabBarController: UITabBarController, ESTabBarDelegate {
         }
     }
     
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // ios10, hide top line
+        tabBar.subviews.first?.subviews.last?.isHidden = true
+    }
+    
     // MARK: - ESTabBar delegate
     internal func tabBar(_ tabBar: UITabBar, shouldSelect item: UITabBarItem) -> Bool {
         if let idx = tabBar.items?.index(of: item), let vc = viewControllers?[idx] {
